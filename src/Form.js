@@ -217,19 +217,22 @@ class Form extends Component {
     const inPersonEligible = this.getEligibility(this.state.grade, isReturningStudent) && isInPhilly;
     const inPersonEligibleReturning = inPersonEligible && isReturningStudent;
     const division = this.getDivision(this.state.grade);
+    const completeSubmit = () => {
+      console.group();
+      console.log('virtual eligible', virtualEligible);
+      console.log('in person eligible', inPersonEligible);
+      console.log('in person eligible, returning POP student', inPersonEligibleReturning);
+      console.log('division', division);
+      console.groupEnd();
+    }
 
     e.preventDefault();
     this.setState({ invalidInputs: [] }, () => {
       const errors = this.validateErrors();
-      if (errors.length > 0) this.setState({ invalidInputs: errors });
+      if (errors.length > 0) {
+        this.setState({ invalidInputs: errors });
+      } else { completeSubmit(); }
     });
-    
-    console.group();
-    console.log('virtual eligible', virtualEligible);
-    console.log('in person eligible', inPersonEligible);
-    console.log('in person eligible, returning POP student', inPersonEligibleReturning);
-    console.log('division', division);
-    console.groupEnd();
   }
 
   render () {
