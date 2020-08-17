@@ -1,6 +1,7 @@
 import React, {Component, Fragment, createRef} from 'react';
 import Select from './Select';
 import RadioGroup from './RadioGroup';
+import waitingList from './waitingListStatus.json';
 
 class Form extends Component {
   state = {
