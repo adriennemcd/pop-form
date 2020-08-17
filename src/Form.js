@@ -5,6 +5,7 @@ import RadioGroup from './RadioGroup';
 class Form extends Component {
   state = {
     alreadyPlays: null,
+    yearsPlaying: '',
     grade: '',
     instrument: '',
     hasWorkingInstrument: null,
@@ -49,7 +50,9 @@ class Form extends Component {
     'No, my student will be attending a different school'
   ];
 
-  getEligibility = (grade) => {
+  getEligibility = (grade, isReturningStudent) => {
+    if (isReturningStudent) return true;
+
     switch(grade) {
       case 'Kindergarten':
       case '1st':
@@ -136,15 +139,40 @@ class Form extends Component {
     }
   }
 
+  cleanupState = () => {
+    const stateObj = {};
+    if (this.state.grade === 'Kindergarten') {
+      stateObj.alreadyPlays = null;
+      stateObj.instrument = '';
+      stateObj.yearsPlaying = '';
+      stateObj.hasWorkingInstrument = null;
+    }
+
+    if (this.state.alreadyPlays === 'no') {
+      stateObj.instrument = '';
+      stateObj.yearsPlaying = '';
+      stateObj.hasWorkingInstrument = null;
+    }
+
+    if (this.state.isInPhilly === 'no') {
+      stateObj.isReturningStudent = null;
+      stateObj.school = '';
+    }
+
+    if (Object.keys(stateObj).length > 0) this.setState(stateObj);
+  }
+
   handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value }, () => {
+      this.cleanupState();
+  });
   }
 
   handleSubmit = (e) => {
     const isInPhilly = this.state.isInPhilly === 'yes';
     const isReturningStudent = this.state.isReturningStudent === 'yes';
-    const virtualEligible = this.getEligibility(this.state.grade);
-    const inPersonEligible = virtualEligible && isInPhilly;
+    const virtualEligible = true; // everyone is eligible for virtual
+    const inPersonEligible = this.getEligibility(this.state.grade, isReturningStudent) && isInPhilly;
     const inPersonEligibleReturning = inPersonEligible && isReturningStudent;
     const division = this.getDivision(this.state.grade);
 
@@ -166,30 +194,24 @@ class Form extends Component {
           values={this.gradeValues}
           handleChange={this.handleChange}
         />
-        <RadioGroup
-          label='Does your student already play an instrument?'
-          values={['yes', 'no']}
-          id='already-play'
-          name='alreadyPlays'
-          checked={this.state.alreadyPlays}
-          handleChange={this.handleChange}
-        />
-        {this.state.alreadyPlays === 'yes' &&
-          <Select
-            name='instrument'
-            label='Select which instrument'
-            values={this.instrumentValues}
+        {this.state.grade && this.state.grade !== 'Kindergarten' &&
+          <RadioGroup
+            label='Does your student already play an instrument?'
+            values={['yes', 'no']}
+            id='already-play'
+            name='alreadyPlays'
+            checked={this.state.alreadyPlays}
             handleChange={this.handleChange}
           />
         }
-        {this.state.alreadyPlays === 'yes' && this.state.instrument === 'Other' &&
-          <div className='form__item'>
-            <label htmlFor='instrument-other' className='form__label'>Please specify:</label>
-            <input className='form__input' id='instrument-other' type='text' name='instrumentOther' onChange={this.handleChange}></input>
-          </div>
-        }
         {this.state.alreadyPlays === 'yes' &&
           <Fragment>
+            <Select
+              name='instrument'
+              label='Select which instrument'
+              values={this.instrumentValues}
+              handleChange={this.handleChange}
+            />
             <div className='form__item'>
               <label htmlFor='years' className='form__label'>How long has your student been playing (# of years)?</label>
               <input className='form__input' type='number' id='years' name='yearsPlaying' onChange={this.handleChange}></input>
