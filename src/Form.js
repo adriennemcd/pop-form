@@ -4,6 +4,7 @@ import RadioGroup from './RadioGroup';
 
 class Form extends Component {
   state = {
+    email: '',
     alreadyPlays: null,
     yearsPlaying: '',
     grade: '',
@@ -15,6 +16,7 @@ class Form extends Component {
     invalidInputs: []
   }
 
+  emailRef = createRef();
   alreadyPlaysRef = createRef();
   yearsPlayingRef = createRef();
   gradeRef = createRef();
@@ -185,10 +187,61 @@ class Form extends Component {
     return invalidInputsNew;
   }
 
-  handleChangeTest = (e) => {
-    this.setState({ [e.target.name]: { ...this.state[e.target.name], value: e.target.value, visible: true } }, () => {
-      this.cleanupState();
-    });
+  assignPlacements = () => {
+    const isInPhilly = this.state.isInPhilly === 'yes';
+    const isReturningStudent = this.state.isReturningStudent === 'yes';
+    const inPersonEligible = this.getEligibility(this.state.grade, isReturningStudent) && isInPhilly;
+    const inPersonEligibleReturning = inPersonEligible && isReturningStudent;
+    const division = this.getDivision(this.state.grade);
+    const link = () => {
+      switch(division) {
+        case '1A':
+          return inPersonEligibleReturning ? 'https://airtable.com/shrmfWWAZwaFv3WyB' :
+          inPersonEligible ? 'https://airtable.com/shrh1loEFwshffQZz' :
+          'https://airtable.com/shr2Y58hN9RMvcgP0';
+        case '1B':
+          return inPersonEligibleReturning ? 'https://airtable.com/shr6xFbA2AbPWnQfM' :
+          inPersonEligible ? 'https://airtable.com/shrQWZNYIcBK5Hj72' :
+          'https://airtable.com/shrPI7qNdEFsJdlwI';
+        case '1C':
+          return inPersonEligibleReturning ? 'https://airtable.com/shrdniZDqIeVwUHvK' :
+          inPersonEligible ? 'https://airtable.com/shr3NbnCPJuXWJmvG' :
+          'https://airtable.com/shr0Eb1SA0oYwV8Os';
+        case '2A':
+          return inPersonEligibleReturning ? 'https://airtable.com/shrJX0sC6Ae3qmuIw' :
+          inPersonEligible ? 'https://airtable.com/shrPVgYpJpjjFI8kE' :
+          'https://airtable.com/shrtEaUe2uVOXJq4H';
+        case '2B':
+          return inPersonEligibleReturning ? 'https://airtable.com/shrhunOCtcMoXw7jc' :
+          inPersonEligible ? 'https://airtable.com/shrTvfvrTN3XmOBbg' :
+          'https://airtable.com/shrUV8gY6LiRMGG7f';
+        case '3A':
+          return inPersonEligibleReturning ? 'https://airtable.com/shrT1CjTnOyW6pMM8' :
+          inPersonEligible ? 'https://airtable.com/shrr0oMZyB6aCnsF2' :
+          'https://airtable.com/shrI4IwBQueVKS7ox';
+        case '3B':
+          return inPersonEligibleReturning ? 'https://airtable.com/shrevqECns168wJd5' :
+          inPersonEligible ? 'https://airtable.com/shruBbtc0nLOc0nBg' :
+          'https://airtable.com/shrc1pADyaOao1Ntt';
+        case '3C':
+          return inPersonEligibleReturning ? 'https://airtable.com/shrMZOeQnyTiJM1fH' :
+          inPersonEligible ? 'https://airtable.com/shrmjKlmGZKgbf2FB' :
+          'https://airtable.com/shrAnDqHG6tBICRan';
+        case '3D':
+          return inPersonEligibleReturning ? 'https://airtable.com/shrSt4jjLk9kkP6PU' :
+          inPersonEligible ? 'https://airtable.com/shrSoDSmrfo0tXV1t' :
+          'https://airtable.com/shrBt4Elc3vUpg6Sk';
+        default:
+          return '';
+      }
+    }
+
+    return {
+      link: link(),
+      division,
+      inPersonEligible,
+      inPersonEligibleReturning
+    }
   }
 
   handleChange = (e) => {
@@ -211,27 +264,15 @@ class Form extends Component {
   }
 
   handleSubmit = (e) => {
-    const isInPhilly = this.state.isInPhilly === 'yes';
-    const isReturningStudent = this.state.isReturningStudent === 'yes';
-    const virtualEligible = true; // everyone is eligible for virtual
-    const inPersonEligible = this.getEligibility(this.state.grade, isReturningStudent) && isInPhilly;
-    const inPersonEligibleReturning = inPersonEligible && isReturningStudent;
-    const division = this.getDivision(this.state.grade);
-    const completeSubmit = () => {
-      console.group();
-      console.log('virtual eligible', virtualEligible);
-      console.log('in person eligible', inPersonEligible);
-      console.log('in person eligible, returning POP student', inPersonEligibleReturning);
-      console.log('division', division);
-      console.groupEnd();
-    }
-
     e.preventDefault();
     this.setState({ invalidInputs: [] }, () => {
       const errors = this.validateErrors();
       if (errors.length > 0) {
         this.setState({ invalidInputs: errors });
-      } else { completeSubmit(); }
+      } else {
+        const placement = this.assignPlacements();
+        console.log(placement);
+      }
     });
   }
 
@@ -240,6 +281,20 @@ class Form extends Component {
 
     return (
       <form className='form' onSubmit={this.handleSubmit}>
+        <div className='form__item'>
+          <label htmlFor='email' className='form__label'>Email address</label>
+          <span className='form__label' aria-hidden='true'>*</span>
+          <input
+            className='form__input'
+            type='email'
+            id='email'
+            name='email'
+            onChange={this.handleChange}
+            aria-describedby='email-error'
+            ref={this.emailRef}
+            aria-invalid={invalidInputs.includes('email')} />
+            {invalidInputs.includes('email') && <span id={`email-error`} className='form__label form__label--error'>This field is required</span>}
+        </div>
         <Select
           name='grade'
           label='Student Grade'
