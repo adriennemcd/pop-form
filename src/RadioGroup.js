@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
-const RadioGroup = (props) => {
+const RadioGroup = (props, ref) => {
 
   return (
     <fieldset className='form__item form__item--radio' aria-required={props.isRequired} required={props.isRequired}>
@@ -19,12 +19,17 @@ const RadioGroup = (props) => {
             value={value}
             checked={props.checked === value}
             onChange={props.handleChange}
+            ref={ref}
+            aria-describedby={`${props.id}-instructions ${props.id}-error`}
+            aria-invalid={props.invalid}
           />
           <label className='form__label' htmlFor={`${props.id}-${i}`}>{value}</label>
         </div>
       )}
+      {props.invalid && <span id={`${props.id}-error`} className='form__label form__label--error'>This field is required</span>}
     </fieldset>
   );
 }
 
-export default RadioGroup;
+RadioGroup.displayName = 'RadioGroup';
+export default forwardRef(RadioGroup);

@@ -1,5 +1,6 @@
 .form {
   $this: &;
+  padding-top: 30px;
 
   &__item {
     margin-bottom: 2rem;
@@ -29,6 +30,14 @@
     &--instructions {
       display: block;
       margin: 0 0 7px 3px;
+      font-family: 'Mulish', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 1.125rem; // 18px
+    }
+
+    &--error {
+      color: #cc160c;
       font-family: 'Mulish', sans-serif;
       font-style: normal;
       font-weight: 400;

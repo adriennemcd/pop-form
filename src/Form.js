@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component, Fragment, createRef} from 'react';
 import Select from './Select';
 import RadioGroup from './RadioGroup';
 
@@ -11,8 +11,18 @@ class Form extends Component {
     hasWorkingInstrument: null,
     school: '',
     isInPhilly: null,
-    isReturningStudent: null
+    isReturningStudent: null,
+    invalidInputs: []
   }
+
+  alreadyPlaysRef = createRef();
+  yearsPlayingRef = createRef();
+  gradeRef = createRef();
+  instrumentRef = createRef();
+  hasWorkingInstrumentRef = createRef();
+  schoolRef = createRef();
+  isInPhillyRef = createRef();
+  isReturningStudentRef = createRef();
 
   gradeValues = [
     'Kindergarten',
@@ -104,7 +114,7 @@ class Form extends Component {
             return this.state.yearsPlaying >= 1 ? '2B' : null;
           case '5th':
           case '6th or 7th':
-            return (this.state.yearsPlaying === '4' || this.state.yearsPlaying === '5') &&
+            return (this.state.yearsPlaying >= '4') &&
             hasWorkingInstrumentOrInPhilly ? '3A' : null;
           case '8th':
           case '9th, 10th, 11th, or 12th':
@@ -124,10 +134,10 @@ class Form extends Component {
     this.state.instrument === 'Trumpet' ||
     this.state.instrument === 'Tuba/Euphonium') {
       switch(grade) {
-        case '3rd or 4th':
+        case '3rd or 4th': // CHANGE TO ONLY 4TH
         case '5th':
         case '6th or 7th':
-          return (this.state.yearsPlaying === 1 || this.state.yearsPlaying === 2) &&
+          return (this.state.yearsPlaying >= 1) &&
           hasWorkingInstrumentOrInPhilly ? '3B' : null;
         case '8th':
         case '9th, 10th, 11th, or 12th':
@@ -162,10 +172,42 @@ class Form extends Component {
     if (Object.keys(stateObj).length > 0) this.setState(stateObj);
   }
 
-  handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value }, () => {
+  validateErrors = () => {
+    const {invalidInputs, ...inputState} = this.state;
+    let invalidInputsNew = [];
+
+    Object.keys(inputState).map((item, i) => {
+      if (this[`${item}Ref`].current && !this.state[item]) {
+        invalidInputsNew.push(item);
+      }
+    });
+
+    return invalidInputsNew;
+  }
+
+  handleChangeTest = (e) => {
+    this.setState({ [e.target.name]: { ...this.state[e.target.name], value: e.target.value, visible: true } }, () => {
       this.cleanupState();
-  });
+    });
+  }
+
+  handleChange = (e) => {
+    const {name, value} = e.target;
+
+    if (this.state.invalidInputs.includes(name)) {
+      const invalidInputs = this.state.invalidInputs.filter(val => val !== name);
+
+      this.setState({
+        [name]: value,
+        invalidInputs
+      }, () => {
+        this.cleanupState();
+      });
+    } else {
+      this.setState({ [name]: value }, () => {
+        this.cleanupState();
+      });
+    }
   }
 
   handleSubmit = (e) => {
@@ -177,6 +219,11 @@ class Form extends Component {
     const division = this.getDivision(this.state.grade);
 
     e.preventDefault();
+    this.setState({ invalidInputs: [] }, () => {
+      const errors = this.validateErrors();
+      if (errors.length > 0) this.setState({ invalidInputs: errors });
+    });
+    
     console.group();
     console.log('virtual eligible', virtualEligible);
     console.log('in person eligible', inPersonEligible);
@@ -186,6 +233,8 @@ class Form extends Component {
   }
 
   render () {
+    const {invalidInputs} = this.state;
+
     return (
       <form className='form' onSubmit={this.handleSubmit}>
         <Select
@@ -194,6 +243,8 @@ class Form extends Component {
           values={this.gradeValues}
           handleChange={this.handleChange}
           isRequired
+          ref={this.gradeRef}
+          invalid={invalidInputs.includes('grade')}
         />
         {this.state.grade && this.state.grade !== 'Kindergarten' &&
           <RadioGroup
@@ -204,6 +255,8 @@ class Form extends Component {
             checked={this.state.alreadyPlays}
             handleChange={this.handleChange}
             isRequired
+            ref={this.alreadyPlaysRef}
+            invalid={invalidInputs.includes('alreadyPlays')}
           />
         }
         {this.state.alreadyPlays === 'yes' &&
@@ -214,12 +267,24 @@ class Form extends Component {
               values={this.instrumentValues}
               handleChange={this.handleChange}
               isRequired
+              ref={this.instrumentRef}
+              invalid={invalidInputs.includes('instrument')}
             />
             <div className='form__item'>
               <label htmlFor='years' className='form__label'>How long has your student been playing (# of years)?</label>
               <span className='form__label' aria-hidden='true'>*</span>
               <span id='years-instructions' className='form__label form__label--instructions'>If your student has been playing for less than a year, type 0</span>
-              <input className='form__input' type='number' min="0" id='years' name='yearsPlaying' onChange={this.handleChange} aria-describedby='years-instructions'></input>
+              <input
+                className='form__input'
+                type='number'
+                min="0"
+                id='years'
+                name='yearsPlaying'
+                onChange={this.handleChange}
+                aria-describedby='years-instructions years-error'
+                ref={this.yearsPlayingRef}
+                aria-invalid={invalidInputs.includes('yearsPlaying')} />
+                {invalidInputs.includes('yearsPlaying') && <span id={`years-error`} className='form__label form__label--error'>This field is required</span>}
             </div>
             <RadioGroup
               label='Do you have a working instrument and the needed supplies at home?'
@@ -229,6 +294,8 @@ class Form extends Component {
               checked={this.state.hasWorkingInstrument}
               handleChange={this.handleChange}
               isRequired
+              ref={this.hasWorkingInstrumentRef}
+              invalid={invalidInputs.includes('hasWorkingInstrument')}
             />
           </Fragment>
         }
@@ -240,6 +307,8 @@ class Form extends Component {
           checked={this.state.isInPhilly}
           handleChange={this.handleChange}
           isRequired
+          ref={this.isInPhillyRef}
+          invalid={invalidInputs.includes('isInPhilly')}
         />
         {this.state.isInPhilly === 'yes' &&
           <RadioGroup
@@ -251,6 +320,8 @@ class Form extends Component {
             checked={this.state.isReturningStudent}
             handleChange={this.handleChange}
             isRequired
+            ref={this.isReturningStudentRef}
+            invalid={invalidInputs.includes('isReturningStudent')}
           />
         }
         {this.state.isInPhilly === 'yes' && this.state.grade && this.state.grade !== '9th, 10th, 11th, or 12th' &&
@@ -260,6 +331,8 @@ class Form extends Component {
             values={this.schoolValues}
             handleChange={this.handleChange}
             isRequired
+            ref={this.schoolRef}
+            invalid={invalidInputs.includes('school')}
           />
         }
         <input className='form__button' type='submit' value='Submit' />
