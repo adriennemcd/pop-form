@@ -143,12 +143,18 @@ class Form extends Component {
   handleSubmit = (e) => {
     const isInPhilly = this.state.isInPhilly === 'yes';
     const isReturningStudent = this.state.isReturningStudent === 'yes';
-    const inPersonEligible = isInPhilly && this.getEligibility(this.state.grade);
+    const virtualEligible = this.getEligibility(this.state.grade);
+    const inPersonEligible = virtualEligible && isInPhilly;
     const inPersonEligibleReturning = inPersonEligible && isReturningStudent;
     const division = this.getDivision(this.state.grade);
 
     e.preventDefault();
-    console.log(inPersonEligible, inPersonEligibleReturning, division);
+    console.group();
+    console.log('virtual eligible', virtualEligible);
+    console.log('in person eligible', inPersonEligible);
+    console.log('in person eligible, returning POP student', inPersonEligibleReturning);
+    console.log('division', division);
+    console.groupEnd();
   }
 
   render () {
