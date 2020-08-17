@@ -6,6 +6,8 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
+    <link href="https://fonts.googleapis.com/css2?family=Laila:wght@500;600;700&display=swap" rel="stylesheet"></link>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;800;900&display=swap" rel="stylesheet"></link>
     <App />
   </React.StrictMode>,
   document.getElementById('root')

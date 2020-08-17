@@ -193,6 +193,7 @@ class Form extends Component {
           label='Student Grade'
           values={this.gradeValues}
           handleChange={this.handleChange}
+          isRequired
         />
         {this.state.grade && this.state.grade !== 'Kindergarten' &&
           <RadioGroup
@@ -202,6 +203,7 @@ class Form extends Component {
             name='alreadyPlays'
             checked={this.state.alreadyPlays}
             handleChange={this.handleChange}
+            isRequired
           />
         }
         {this.state.alreadyPlays === 'yes' &&
@@ -211,10 +213,13 @@ class Form extends Component {
               label='Select which instrument'
               values={this.instrumentValues}
               handleChange={this.handleChange}
+              isRequired
             />
             <div className='form__item'>
               <label htmlFor='years' className='form__label'>How long has your student been playing (# of years)?</label>
-              <input className='form__input' type='number' id='years' name='yearsPlaying' onChange={this.handleChange}></input>
+              <span className='form__label' aria-hidden='true'>*</span>
+              <span id='years-instructions' className='form__label form__label--instructions'>If your student has been playing for less than a year, type 0</span>
+              <input className='form__input' type='number' min="0" id='years' name='yearsPlaying' onChange={this.handleChange} aria-describedby='years-instructions'></input>
             </div>
             <RadioGroup
               label='Do you have a working instrument and the needed supplies at home?'
@@ -223,6 +228,7 @@ class Form extends Component {
               name='hasWorkingInstrument'
               checked={this.state.hasWorkingInstrument}
               handleChange={this.handleChange}
+              isRequired
             />
           </Fragment>
         }
@@ -233,15 +239,18 @@ class Form extends Component {
           name='isInPhilly'
           checked={this.state.isInPhilly}
           handleChange={this.handleChange}
+          isRequired
         />
         {this.state.isInPhilly === 'yes' &&
           <RadioGroup
-            label='Is your student a returning POP student? (includes students who have participated in our regular, school year programming)'
+            label='Is your student a returning POP student?'
+            instructions='Includes students who have participated in our regular, school year programming'
             values={['yes', 'no']}
             id='returning-student'
             name='isReturningStudent'
             checked={this.state.isReturningStudent}
             handleChange={this.handleChange}
+            isRequired
           />
         }
         {this.state.isInPhilly === 'yes' && this.state.grade && this.state.grade !== '9th, 10th, 11th, or 12th' &&
@@ -250,6 +259,7 @@ class Form extends Component {
             label='Will your student be attending any of these schools?'
             values={this.schoolValues}
             handleChange={this.handleChange}
+            isRequired
           />
         }
         <input className='form__button' type='submit' value='Submit' />
