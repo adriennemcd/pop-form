@@ -107,7 +107,7 @@ class Form extends Component {
       };
     } else if (this.state.instrument === 'Bass' ||
       this.state.instrument === 'Cello' ||
-      this.state.instument === 'Viola' ||
+      this.state.instrument === 'Viola' ||
       this.state.instrument === 'Violin') {
         switch(grade) {
           case '1st':
