@@ -118,11 +118,11 @@ class Form extends Component {
             return this.state.yearsPlaying >= 1 ? '2B' : null;
           case '5th':
           case '6th or 7th':
-            return (this.state.yearsPlaying >= '4') &&
+            return (this.state.yearsPlaying >= 3) &&
             hasWorkingInstrumentOrInPhilly ? '3A' : null;
           case '8th':
           case '9th, 10th, 11th, or 12th':
-            return this.state.yearsPlaying >= 6 &&
+            return this.state.yearsPlaying >= 2 &&
             hasWorkingInstrumentOrInPhilly ? '3C' : null;
           default: 
             return null;
@@ -145,7 +145,7 @@ class Form extends Component {
           hasWorkingInstrumentOrInPhilly ? '3B' : null;
         case '8th':
         case '9th, 10th, 11th, or 12th':
-          return this.state.yearsPlaying >= 3 &&
+          return this.state.yearsPlaying >= 2 &&
           hasWorkingInstrumentOrInPhilly ? '3D' : null;
         default:
           return null;
