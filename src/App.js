@@ -9,7 +9,13 @@ class App extends Component {
   };
 
   handleSubmit = (placement) => {
-    this.setState({ placement });
+    this.setState({ placement }, () => {
+      window.scroll({
+        top: 0, 
+        left: 0, 
+        behavior: 'smooth'
+      });
+    });
   }
 
   render () {
