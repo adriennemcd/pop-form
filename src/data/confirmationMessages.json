@@ -1,0 +1,22 @@
+{
+  "ineligible": {
+    "ieTitle": "Thank you for completing our eligibility survey!",
+    "ineligibility": "At this time, we are unable to provide programming for your student. If you have any questions, please reach out to our Program Manager at"
+  },
+  "eligible": {
+    "title": "Congratulations!",
+    "eligibility1": "Your student is eligible for",
+    "eligibility2": "of our virtual programming",
+    "schedule": "If you register, your student's classes would take place on:",
+    "inPerson": "Your student is also eligible for our in-person programming. We're unable to determine when we will go back to in-person programming at this time, but we will provide you with more information when we have it.",
+    "register": "Register now"
+  },
+  "waitingList": {
+    "wlTitle": "Thank you for completing our eligibility survey!",
+    "wlEligibility1": "Your student is eligible for",
+    "wlEligibility2": "of our virtual programming",
+    "message": "Unfortunately, this division is currently at capacity and cannot accept any additional students. Please complete our waiting list form and we will contact you if a slot opens up.",
+    "CTA": "Join waiting list",
+    "wlLink": "https://airtable.com/shrt6OmHWFSJmv0nf"
+  }
+}

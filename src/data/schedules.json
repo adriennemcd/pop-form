@@ -1,0 +1,38 @@
+{
+  "1A": {
+    "days": "Monday, Wednesday, Friday",
+    "time": "3:30 - 4:00pm"
+  },
+  "1B": {
+    "days": "Monday, Wednesday, Friday",
+    "time": "3:30 - 4:00pm"
+  },
+  "1C": {
+    "days": "Monday, Wednesday, Friday",
+    "time": "4:45 - 5:45pm"
+  },
+  "2A": {
+    "days": "Monday, Wednesday, Friday",
+    "time": "3:30 - 4:00pm"
+  },
+  "2B": {
+    "days": "Monday, Wednesday, Friday",
+    "time": "3:30 - 4:00pm"
+  },
+  "3A": {
+    "days": "Tuesday, Thursday, Friday",
+    "time": "4:45 - 5:15pm"
+  },
+  "3B": {
+    "days": "Tuesday, Thursday, Friday",
+    "time": "4:45 - 5:15pm"
+  },
+  "3C": {
+    "days": "Tuesday, Thursday, Friday",
+    "time": "3:30 - 4:30pm"
+  },
+  "3D": {
+    "days": "Tuesday, Thursday, Friday",
+    "time": "3:30 - 4:30pm"
+  }
+}
