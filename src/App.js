@@ -10,11 +10,8 @@ class App extends Component {
 
   handleSubmit = (placement) => {
     this.setState({ placement }, () => {
-      window.scroll({
-        top: 0, 
-        left: 0, 
-        behavior: 'smooth'
-      });
+      const parent_origin = 'https://playonphilly.org/'
+      window.parent.postMessage({'task': 'scroll_top'}, parent_origin);
     });
   }
 
