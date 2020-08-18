@@ -1,6 +1,9 @@
 .app {
+  padding: 30px;
   font-family: 'Mulish', sans-serif;
+  line-height: 1.4;
   color: #1d3452;
+  background: #fafafa;
 }
 
 h1 {
@@ -16,4 +19,14 @@ h1 {
 
 .logo {
   max-width: 300px;
+}
+
+a {
+  color: #df6760;
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover, &:focus {
+    color: #1d3452;
+  }
 }

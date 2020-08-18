@@ -1,0 +1,33 @@
+.confirmation {
+  &__title {
+    margin-top: 0;
+    font-family: 'Laila', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.5rem;
+  }
+
+  &__text {
+    font-size: 1.25rem;
+
+    &--emphasis { font-weight: 600; }
+  }
+
+  &__button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 25px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: #1d3452;
+    border: none;
+    text-decoration: none;
+
+    &:hover, &:focus {
+      color: white;
+      background: #df6760;
+    }
+  }
+}
