@@ -29,7 +29,8 @@ class Form extends Component {
     'Kindergarten',
     '1st',
     '2nd',
-    '3rd or 4th',
+    '3rd',
+    '4th',
     '5th',
     '6th or 7th',
     '8th',
@@ -95,7 +96,8 @@ class Form extends Component {
         case '1st':
         case '2nd':
           return '1A';
-        case '3rd or 4th':
+        case '3rd':
+        case '4th':
           return '1B';
         case '5th':
         case '6th or 7th':
@@ -111,7 +113,8 @@ class Form extends Component {
           case '1st':
           case '2nd':
             return this.state.yearsPlaying >= 1 ? '2A' : null;
-          case '3rd or 4th':
+          case '3rd':
+          case '4th':
             return this.state.yearsPlaying >= 1 ? '2B' : null;
           case '5th':
           case '6th or 7th':
@@ -135,7 +138,7 @@ class Form extends Component {
     this.state.instrument === 'Trumpet' ||
     this.state.instrument === 'Tuba/Euphonium') {
       switch(grade) {
-        case '3rd or 4th': // CHANGE TO ONLY 4TH
+        case '4th':
         case '5th':
         case '6th or 7th':
           return (this.state.yearsPlaying >= 1) &&
