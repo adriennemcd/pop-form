@@ -14,7 +14,7 @@ function Confirmation(props) {
       {!division &&
         <Fragment>
           <p className='confirmation__title'>{ieTitle}</p>
-          <p className='confirmation__text'>{ineligibility} <a href='mailto: michael@playonphilly.org'>michael@playonphilly.org</a>.</p>
+          <p className='confirmation__text'>{ineligibility} <a href='mailto: michael@playonphilly.org' target='_parent'>michael@playonphilly.org</a>.</p>
         </Fragment>
       }
       {division && !waitingListStatus[division] &&
@@ -30,7 +30,7 @@ function Confirmation(props) {
           {inPersonEligible &&
             <p className='confirmation__text'>{inPerson}</p>
           }
-          <a href={link} className='confirmation__button'>{register}</a>
+          <a href={link} target='_parent' className='confirmation__button'>{register}</a>
         </Fragment>
       }
       { division && waitingListStatus[division] &&
@@ -38,7 +38,7 @@ function Confirmation(props) {
           <p className='confirmation__title'>{wlTitle}</p>
           <p className='confirmation__text'>{wlEligibility1} <span className='confirmation__text confirmation__text--emphasis'>Division {division}</span> {wlEligibility2}.</p>
           <p className='confirmation__text'>{message}</p>
-          <a href={`${wlLink}`} className='confirmation__button'>{CTA}</a>
+          <a href={`${wlLink}`} target='_parent' className='confirmation__button'>{CTA}</a>
         </Fragment>
       }
     </div>
