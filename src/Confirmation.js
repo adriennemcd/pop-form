@@ -14,7 +14,7 @@ function Confirmation(props) {
       {!division &&
         <Fragment>
           <p className='confirmation__title'>{ieTitle}</p>
-          <p className='confirmation__text'>{ineligibility} <a href='mailto: michael@playonphilly.org' target='_parent'>michael@playonphilly.org</a>.</p>
+          <p className='confirmation__text'>{ineligibility} <a href='mailto:michael@playonphilly.org' target='_top'>michael@playonphilly.org</a>.</p>
         </Fragment>
       }
       {division && !waitingListStatus[division] &&
