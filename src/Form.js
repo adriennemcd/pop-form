@@ -105,6 +105,17 @@ class Form extends Component {
         default:
           return null;
       };
+    } else if (this.state.instrument === 'Other') {
+      switch(grade) {
+        case '1st':
+        case '2nd':
+          return this.state.yearsPlaying >= 1 ? '2A' : null;
+        case '3rd':
+        case '4th':
+          return this.state.yearsPlaying >= 1 ? '2B' : null;
+        default:
+          return null;
+      }
     } else if (this.state.instrument === 'Bass' ||
       this.state.instrument === 'Cello' ||
       this.state.instrument === 'Viola' ||
