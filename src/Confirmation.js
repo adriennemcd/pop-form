@@ -3,6 +3,31 @@ import confirmationMessages from './data/confirmationMessages.json';
 import waitingListStatus from './data/waitingListStatus.json';
 import schedules from './data/schedules.json';
 
+const getDivision = (division) => {
+  switch(division) {
+    case '1A':
+      return '1: Pre-Instrumental K-2';
+    case '1B':
+      return '1: Pre-Instrumental 3-4';
+    case '1C':
+      return '1: Pre-Instrumental 5-7';
+    case '2A':
+      return '2: Early Instrumental 1-2';
+    case '2B':
+      return '2: Early Instrumental 3-4';
+    case '3A':
+      return '3: Strings 5-7';
+    case '3B':
+      return '3: Winds, Brass, Percussion 4-7';
+    case '3C':
+      return '3: Strings 8-12';
+    case '3D':
+      return '3: Winds, Brass, Percussion 8-12';
+    default:
+      return null
+  }
+}
+
 function Confirmation(props) {
   const { division, link, inPersonEligible } = props.placement;
   const { ieTitle, ineligibility } = confirmationMessages.ineligible;
@@ -20,7 +45,7 @@ function Confirmation(props) {
       {division && !waitingListStatus[division] &&
         <Fragment>
           <p className='confirmation__title'>{title}</p>
-          <p className='confirmation__text'>{eligibility1} <span className='confirmation__text confirmation__text--emphasis'>Division {division}</span> {eligibility2}.</p>
+          <p className='confirmation__text'>{eligibility1} <span className='confirmation__text confirmation__text--emphasis'>Division {getDivision(division)}</span> {eligibility2}.</p>
           <p className='confirmation__text'>{schedule}<br />
             <span className='confirmation__text confirmation__text--emphasis'>
               {schedules[division].days}<br />
@@ -36,7 +61,7 @@ function Confirmation(props) {
       { division && waitingListStatus[division] &&
         <Fragment>
           <p className='confirmation__title'>{wlTitle}</p>
-          <p className='confirmation__text'>{wlEligibility1} <span className='confirmation__text confirmation__text--emphasis'>Division {division}</span> {wlEligibility2}.</p>
+          <p className='confirmation__text'>{wlEligibility1} <span className='confirmation__text confirmation__text--emphasis'>Division {getDivision(division)}</span> {wlEligibility2}.</p>
           <p className='confirmation__text'>{message}</p>
           <a href={`${wlLink}`} target='_parent' className='confirmation__button'>{CTA}</a>
         </Fragment>
