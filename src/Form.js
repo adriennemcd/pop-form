@@ -295,11 +295,11 @@ class Form extends Component {
             <div className='form__item'>
               <label htmlFor='years' className='form__label'>How long has your student been playing (# of years)?</label>
               <span className='form__label' aria-hidden='true'>*</span>
-              <span id='years-instructions' className='form__label form__label--instructions'>If your student has been playing for less than a year, type 0</span>
+              <span id='years-instructions' className='form__label form__label--instructions'>If your student has been playing for less than a year, you should still type 1</span>
               <input
                 className='form__input'
                 type='number'
-                min="0"
+                min="1"
                 id='years'
                 name='yearsPlaying'
                 onChange={this.handleChange}
