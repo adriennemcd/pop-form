@@ -68,7 +68,8 @@ class Form extends Component {
     switch(grade) {
       case 'Kindergarten':
       case '1st':
-      case '3rd or 4th':
+      case '3rd':
+      case '4th':
         return this.state.school === 'St. Francis de Sales' || this.state.school === 'Independence Charter School West';
       case '5th':
         return this.state.school === 'St. Francis de Sales' ||
