@@ -1,52 +1,52 @@
 {
   "1A": {
-    "inPersonReturning": "https://airtable.com/shrmfWWAZwaFv3WyB",
-    "inPerson": "https://airtable.com/shrh1loEFwshffQZz",
-    "virtual": "https://airtable.com/shr2Y58hN9RMvcgP0"
+    "inPersonReturning": "https://playonphilly.org/enrollment/?div=1A&divlong=Pre-Instrumental%20K-2&type=In%20Person&return=Returning&sch=Mondays,%20Wednesdays%20and%20Fridays%20from%203:30-4:15pm",
+    "inPerson": "https://playonphilly.org/enrollment/?div=1A&divlong=Pre-Instrumental%20K-2&type=In%20Person&return=New&sch=Mondays,%20Wednesdays%20and%20Fridays%20from%203:30-4:15pm",
+    "virtual": "https://playonphilly.org/enrollment/?div=1A&divlong=Pre-Instrumental%20K-2&type=Virtual-Only&return=New&sch=Mondays,%20Wednesdays%20and%20Fridays%20from%203:30-4:15pm"
   },
   "1B": {
-    "inPersonReturning": "https://airtable.com/shr6xFbA2AbPWnQfM",
-    "inPerson": "https://airtable.com/shrQWZNYIcBK5Hj72",
-    "virtual": "https://airtable.com/shrPI7qNdEFsJdlwI"
+    "inPersonReturning": "https://playonphilly.org/enrollment/?div=1B&divlong=Pre-Instrumental%203-4&type=In%20Person&return=Returning&sch=Mondays,%20Wednesdays%20and%20Fridays%20from%203:30-4:15pm",
+    "inPerson": "https://playonphilly.org/enrollment/?div=1B&divlong=Pre-Instrumental%203-4&type=In%20Person&return=New&sch=Mondays,%20Wednesdays%20and%20Fridays%20from%203:30-4:15pm",
+    "virtual": "https://playonphilly.org/enrollment/?div=1B&divlong=Pre-Instrumental%203-4&type=Virtual-Only&return=New&sch=Mondays,%20Wednesdays%20and%20Fridays%20from%203:30-4:15pm"
   },
   "1C": {
-    "inPersonReturning": "https://airtable.com/shrdniZDqIeVwUHvK",
-    "inPerson": "https://airtable.com/shr3NbnCPJuXWJmvG",
-    "virtual": "https://airtable.com/shr0Eb1SA0oYwV8Os"
+    "inPersonReturning": "https://playonphilly.org/enrollment/?div=1C&divlong=Pre-Instrumental%205-7&type=In%20Person&return=Returning&sch=Mondays,%20Wednesdays%20and%20Fridays%20from%204:45-5:45pm",
+    "inPerson": "https://playonphilly.org/enrollment/?div=1C&divlong=Pre-Instrumental%205-7&type=In%20Person&return=New&sch=Mondays,%20Wednesdays%20and%20Fridays%20from%204:45-5:45pm",
+    "virtual": "https://playonphilly.org/enrollment/?div=1C&divlong=Pre-Instrumental%205-7&type=Virtual-Only&return=New&sch=Mondays,%20Wednesdays%20and%20Fridays%20from%204:45-5:45pm"
   },
   "2A": {
-    "inPersonReturning": "https://airtable.com/shrJX0sC6Ae3qmuIw",
-    "inPerson": "https://airtable.com/shrPVgYpJpjjFI8kE",
-    "virtual": "https://airtable.com/shrtEaUe2uVOXJq4H"
+    "inPersonReturning": "https://playonphilly.org/enrollment/?div=2A&divlong=Early%20Instrumental%201-2&type=In%20Person&return=Returning&sch=Mondays,%20Wednesdays%20and%20Fridays%20from%203:30-4:15pm",
+    "inPerson": "https://playonphilly.org/enrollment/?div=2A&divlong=Early%20Instrumental%201-2&type=In%20Person&return=New&sch=Mondays,%20Wednesdays%20and%20Fridays%20from%203:30-4:15pm",
+    "virtual": "https://playonphilly.org/enrollment/?div=2A&divlong=Early%20Instrumental%201-2&type=Virtual-Only&return=New&sch=Mondays,%20Wednesdays%20and%20Fridays%20from%203:30-4:15pm"
   }
   ,
   "2B": {
-    "inPersonReturning": "https://airtable.com/shrhunOCtcMoXw7jc",
-    "inPerson": "https://airtable.com/shrTvfvrTN3XmOBbg",
-    "virtual": "https://airtable.com/shrUV8gY6LiRMGG7f"
+    "inPersonReturning": "https://playonphilly.org/enrollment/?div=2B&divlong=Early%20Instrumental%203-4&type=In%20Person&return=Returning&sch=Mondays,%20Wednesdays%20and%20Fridays%20from%203:30-4:15pm",
+    "inPerson": "https://playonphilly.org/enrollment/?div=2B&divlong=Early%20Instrumental%203-4&type=In%20Person&return=New&sch=Mondays,%20Wednesdays%20and%20Fridays%20from%203:30-4:15pm",
+    "virtual": "https://playonphilly.org/enrollment/?div=2B&divlong=Early%20Instrumental%203-4&type=Virtual-Only&return=New&sch=Mondays,%20Wednesdays%20and%20Fridays%20from%203:30-4:15pm"
   }
   ,
   "3A": {
-    "inPersonReturning": "https://airtable.com/shrT1CjTnOyW6pMM8",
-    "inPerson": "https://airtable.com/shrr0oMZyB6aCnsF2",
-    "virtual": "https://airtable.com/shrI4IwBQueVKS7ox"
+    "inPersonReturning": "https://playonphilly.org/enrollment/?div=3A&divlong=Strings%205-7&type=In%20Person&return=Returning&sch=Tuesdays,%20Thursdays%20and%20Fridays%20from%204:45-5:45pm",
+    "inPerson": "https://playonphilly.org/enrollment/?div=3A&divlong=Strings%205-7&type=In%20Person&return=New&sch=Tuesdays,%20Thursdays%20and%20Fridays%20from%204:45-5:45pm",
+    "virtual": "https://playonphilly.org/enrollment/?div=3A&divlong=Strings%205-7&type=Virtual-Only&return=New&sch=Tuesdays,%20Thursdays%20and%20Fridays%20from%204:45-5:45pm"
   }
   ,
   "3B": {
-    "inPersonReturning": "https://airtable.com/shrevqECns168wJd5",
-    "inPerson": "https://airtable.com/shruBbtc0nLOc0nBg",
-    "virtual": "https://airtable.com/shrc1pADyaOao1Ntt"
+    "inPersonReturning": "https://playonphilly.org/enrollment/?div=3B&divlong=Winds,%20Brass%20and%20Percussion%204-7&type=In%20Person&return=Returning&sch=Tuesdays,%20Thursdays%20and%20Fridays%20from%204:45-5:45pm",
+    "inPerson": "https://playonphilly.org/enrollment/?div=3B&divlong=Winds,%20Brass%20and%20Percussion%204-7&type=In%20Person&return=New&sch=Tuesdays,%20Thursdays%20and%20Fridays%20from%204:45-5:45pm",
+    "virtual": "https://playonphilly.org/enrollment/?div=3B&divlong=Winds,%20Brass%20and%20Percussion%204-7&type=Virtual-Only&return=New&sch=Tuesdays,%20Thursdays%20and%20Fridays%20from%204:45-5:45pm"
   }
   ,
   "3C": {
-    "inPersonReturning": "https://airtable.com/shrMZOeQnyTiJM1fH",
-    "inPerson": "https://airtable.com/shrmjKlmGZKgbf2FB",
-    "virtual": "https://airtable.com/shrAnDqHG6tBICRan"
+    "inPersonReturning": "https://playonphilly.org/enrollment/?div=3C&divlong=Strings%208-12&type=In%20Person&return=Returning&sch=Tuesdays,%20Thursdays%20and%20Fridays%20from%203:30-4:30pm",
+    "inPerson": "https://playonphilly.org/enrollment/?div=3C&divlong=Strings%208-12&type=In%20Person&return=New&sch=Tuesdays,%20Thursdays%20and%20Fridays%20from%203:30-4:30pm",
+    "virtual": "https://playonphilly.org/enrollment/?div=3C&divlong=Strings%208-12&type=Virtual-Only&return=New&sch=Tuesdays,%20Thursdays%20and%20Fridays%20from%203:30-4:30pm"
   }
   ,
   "3D": {
-    "inPersonReturning": "https://airtable.com/shrSt4jjLk9kkP6PU",
-    "inPerson": "https://airtable.com/shrSoDSmrfo0tXV1t",
-    "virtual": "https://airtable.com/shrBt4Elc3vUpg6Sk"
+    "inPersonReturning": "https://playonphilly.org/enrollment/?div=3D&divlong=Winds,%20Brass%20and%20Percussion%208-12&type=In%20Person&return=Returning&sch=Tuesdays,%20Thursdays%20and%20Fridays%20from%203:30-4:30pm",
+    "inPerson": "https://playonphilly.org/enrollment/?div=3D&divlong=Winds,%20Brass%20and%20Percussion%208-12&type=In%20Person&return=New&sch=Tuesdays,%20Thursdays%20and%20Fridays%20from%203:30-4:30pm",
+    "virtual": "https://playonphilly.org/enrollment/?div=3D&divlong=Winds,%20Brass%20and%20Percussion%208-12&type=Virtual-Only&return=New&sch=Tuesdays,%20Thursdays%20and%20Fridays%20from%203:30-4:30pm"
   }
 }
